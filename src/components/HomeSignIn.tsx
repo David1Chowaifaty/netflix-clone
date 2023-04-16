@@ -6,12 +6,29 @@ interface HomeSignInProps {}
 
 const HomeSignIn: FunctionComponent<HomeSignInProps> = () => {
   const [email, setEmail] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
+  const [focused, setFocused] = useState<boolean>(false);
+  function validateEmail(email: string): boolean {
+    const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   return (
     <form className="flex flex-col gap-9 lg:flex-row lg:items-center mt-14">
       <Input
+        error={error}
         placeholder="Email address"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onFocus={() => setFocused(true)}
+        focused={focused}
+        onChange={(e) => {
+          setError(false);
+          setEmail(e.target.value);
+        }}
+        onBlur={() => {
+          setFocused(false);
+          validateEmail(email) ? setError(false) : setError(true);
+        }}
       />
       <button
         type="submit"

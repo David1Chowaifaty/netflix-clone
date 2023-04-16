@@ -7,11 +7,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <section className="relative min-h-screen home py-10 text-white px-7">
+      <section className="relative h-[100vh] home py-10 text-white px-7 bg-left-top bg- lg:bg-center lg:px-20">
         <nav>
-          <Link href={"/"} className="font-black text-red-600 text-lg">
-            NETFLIX
-          </Link>
+          <Image src="/logo.svg" alt="logo" height={40} width={80} />
         </nav>
         <h1 className="mt-20 font-bold text-4xl md:text-5xl lg:text-[4em] lg:max-w-5xl">
           Unlimited movies, TV shows, and more.
@@ -26,7 +24,7 @@ export default function Home() {
           <HomeSignIn />
         </div>
       </section>
-      <section className="h-fit  px-4 grid gap-4 -translate-y-32 sm:grid-cols-2 md:grid-cols-4 md:translate-y-0 ">
+      <section className="h-fit  px-4 grid gap-4 -translate-y-32 sm:grid-cols-2 xl:grid-cols-4 md:translate-y-2 lg:px-10">
         <HomeCard
           icon={
             <Image
@@ -76,12 +74,12 @@ export default function Home() {
           description="Save your favorites easily and always have something to watch."
         />
       </section>
-      <section className="relative min-h-screen py-5 px-16 lg:px-16">
+      <section className="relative min-h-screen py-5 px-16 -translate-y-32 lg:px-28 md:translate-y-0">
         <h1 className="text-4xl text-white font-bold mb-10">
           Frequently Asked Questions
         </h1>
         <AccordionSection />
-        <p>
+        <p className="text-white font-medium text-lg mt-10">
           Ready to watch? Enter your email to create or restart your membership.
         </p>
         <HomeSignIn />

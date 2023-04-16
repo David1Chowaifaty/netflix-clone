@@ -12,10 +12,10 @@ const HomeCard: FunctionComponent<HomeCardProps> = ({
   description,
 }) => {
   return (
-    <div className="w-full text-white rounded-lg px-6 py-10 space-y-5 bg-gradient-to-tl from-blue-900  to-pink-800">
+    <div className="w-full text-white rounded-lg px-6 h-72 xl:h-96 xl:pb-20 flex flex-col  justify-center bg-gradient-to-tl from-blue-900  to-pink-800">
       <span>{icon}</span>
       <h1 className="text-2xl font-semibold">{title}</h1>
-      <h3 className="font-medium">{description}</h3>
+      <h3 className="font-medium mt-5">{description}</h3>
     </div>
   );
 };

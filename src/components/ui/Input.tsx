@@ -1,28 +1,36 @@
 "use client";
 import { FunctionComponent, InputHTMLAttributes, useState } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  error: boolean;
+  focused: boolean;
+}
 
-const Input: FunctionComponent<InputProps> = ({ ...props }) => {
+const Input: FunctionComponent<InputProps> = ({ focused, error, ...props }) => {
   const { placeholder, id, value } = props;
-  const [focused, setFocused] = useState<boolean>(false);
 
   return (
-    <label htmlFor={id} className="relative flex items-center">
-      <span
-        className={`px-4 font-semibold text-gray-500 absolute transition-all ${
-          (focused || value !== "") && "top-2 -mt-2 text-white text-xs  "
-        }`}
+    <div>
+      <label
+        htmlFor={id}
+        className={`relative flex items-center  rounded-md h-12 py-1 px-4 w-80 bg-black/40 border ring-gray-300 border-gray-600 ${
+          focused && "ring"
+        } ${error && "border-red-500 border-2"}`}
       >
-        {placeholder}
-      </span>
-      <input
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        {...props}
-        className="h-12 w-80 rounded-md text-sm align-bottom  outline-white px-4 border border-gray-600 bg-black/40 placeholder:text-transparent"
-      />
-    </label>
+        <span
+          className={`px-4 font-semibold text-gray-500 absolute transition-all ${
+            (focused || value !== "") && "top-3 -mt-2 text-white text-xs  "
+          }`}
+        >
+          {placeholder}
+        </span>
+        <input
+          {...props}
+          className="  text-sm   w-full bg-transparent self-end focus:outline-none px-4    placeholder:text-transparent"
+        />
+      </label>
+      {error && <p className="text-red-500">Invalid Email</p>}
+    </div>
   );
 };
 

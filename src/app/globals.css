@@ -10,8 +10,21 @@ body {
 .home {
   background-image: linear-gradient(
       103.24deg,
-      rgba(0, 8, 29, 0.9) 23.83%,
-      rgba(0, 8, 29, 0.3) 96.1%
+      #00081de6 23.83%,
+      #00081d4d 96.1%
     ),
     url(https://assets.nflxext.com/ffe/siteui/vlv3/61e79073-50cf-4f7b-9a23-73290e6f7dca/24f9b77f-aca8-474d-9b08-62c65b7df974/LB-en-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+}
+.home::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20vh;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 8, 29, 1) 0%,
+    rgba(0, 8, 29, 0) 100%
+  );
 }
